@@ -263,12 +263,12 @@ def main(theme_colors):
                         image_placeholder.image(
                             default_image_path,
                             caption="Sample Image: Objects Detected",
-                            width=700,
+                            width=600,
                         )
                     else:
                         uploaded_image = PIL.Image.open(source_img)
                         image_placeholder.image(
-                            source_img, caption="Uploaded Image", width=700
+                            source_img, caption="Uploaded Image", width=600
                         )
                 except Exception as ex:
                     st.error("Error occurred while opening the image.")
@@ -321,7 +321,7 @@ def main(theme_colors):
 
     if source_img:
         uploaded_image = PIL.Image.open(source_img)
-        image_placeholder.image(uploaded_image, caption="Uploaded Image", width=700)
+        image_placeholder.image(uploaded_image, caption="Uploaded Image", width=600)
 
         # Extract GPS metadata
         gps_data = get_gps_location(source_img)
@@ -383,13 +383,14 @@ def main(theme_colors):
                         result_image, leaf_boxes, res_leaf[0].names, cleaf_colors
                     )
 
+                    # Display the image
                     with st.container(border=True):
-                        st.image(result_image, caption="Detected Image", width=700)
+                        st.image(result_image, caption="Detected Image", width=600)
 
                     saved_any_detections = False  # Track if anything was saved
                     uploaded = False
                     image_placeholder.image(
-                        result_image, caption="Detected Image", width=700
+                        result_image, caption="Detected Image", width=600
                     )
 
                     # Display overall disease status in a prominent way
@@ -461,7 +462,7 @@ def main(theme_colors):
                                         img_path = disease_details.get("image", "")
                                         if img_path:
                                             try:
-                                                st.image(img_path, width=700)
+                                                st.image(img_path, width=280)
                                             except:
                                                 st.info("Image preview not available")
 
@@ -603,14 +604,14 @@ def main(theme_colors):
 
                     # Display the image
                     with st.container(border=True):
-                        st.image(result_image, caption="Detected Image", width=700)
+                        st.image(result_image, caption="Detected Image", width=600)
 
                     saved_any_detections = False
                     uploaded = False
                     detection_results = []
 
                     image_placeholder.image(
-                        result_image, caption="Detected Image", width=700
+                        result_image, caption="Detected Image", width=600
                     )
 
                     # Check for disease model and show health status
@@ -697,7 +698,7 @@ def main(theme_colors):
                                             img_path = disease_details.get("image", "")
                                             if img_path:
                                                 try:
-                                                    st.image(img_path, width=700)
+                                                    st.image(img_path, width=280)
                                                 except:
                                                     st.info(
                                                         "Image preview not available"
