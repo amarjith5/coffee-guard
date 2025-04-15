@@ -385,23 +385,23 @@ def main(theme_colors):
 
                     # Display the image
                     with st.container(border=True):
-                        st.image(result_image, caption="Detected Image", width=500)
+                        st.image(result_image, caption="Detected Image", width=450)
 
                     saved_any_detections = False  # Track if anything was saved
                     uploaded = False
                     image_placeholder.image(
-                        result_image, caption="Detected Image", width=500
+                        result_image, caption="Detected Image", width=450
                     )
 
                     # Display overall disease status in a prominent way
                     if len(disease_boxes) == 0:
                         st.markdown(
                             f"""
-                            <div style="display: flex; align-items: center; gap: 10px; background-color: #d1e7dd; color: #0f5132; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                                <span style="font-size: 2rem;">✅</span>
+                            <div style="display: flex; align-items: center; gap: 10px; background-color: #d1e7dd; color: #0f5132; padding: 12px; border-radius: 8px; margin: 16px 0;">
+                                <span style="font-size: 1.5rem;">✅</span>
                                 <div>
-                                    <h3 style="margin: 0; font-weight: 600;">HEALTHY LEAF</h3>
-                                    <p style="margin: 0;">No diseases detected in this sample</p>
+                                    <h3 style="margin: 0; font-weight: 600; font-size: 1.1rem;">HEALTHY LEAF</h3>
+                                    <p style="margin: 4px 0 0 0; font-size: 0.9rem;">No diseases detected in this sample</p>
                                 </div>
                             </div>
                         """,
@@ -410,11 +410,11 @@ def main(theme_colors):
                     else:
                         st.markdown(
                             f"""
-                            <div style="display: flex; align-items: center; gap: 10px; background-color: #fff3cd; color: #664d03; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                                <span style="font-size: 2rem;">⚠️</span>
+                            <div style="display: flex; align-items: center; gap: 10px; background-color: #fff3cd; color: #664d03; padding: 12px; border-radius: 8px; margin: 16px 0;">
+                                <span style="font-size: 1.5rem;">⚠️</span>
                                 <div>
-                                    <h3 style="margin: 0; font-weight: 600;">DISEASES DETECTED</h3>
-                                    <p style="margin: 0;">{len(disease_boxes)} issue(s) found in this sample</p>
+                                    <h3 style="margin: 0; font-weight: 600; font-size: 1.1rem;">DISEASES DETECTED</h3>
+                                    <p style="margin: 4px 0 0 0; font-size: 0.9rem;">{len(disease_boxes)} issue(s) found in this sample</p>
                                 </div>
                             </div>
                         """,
@@ -462,61 +462,63 @@ def main(theme_colors):
                                         img_path = disease_details.get("image", "")
                                         if img_path:
                                             try:
-                                                st.image(img_path, width=250)
+                                                st.image(img_path, width=200)
                                             except:
                                                 st.info("Image preview not available")
 
                                     with cols[1]:
                                         st.markdown(
-                                            f"<h3 style='color: {primary_color}; margin-top: 0;'>{disease_details.get('title')}</h3>",
+                                            f"<h3 style='color: {primary_color}; margin-top: 0; font-size: 1.2rem;'>{disease_details.get('title')}</h3>",
                                             unsafe_allow_html=True,
                                         )
                                         if "name2" in disease_details:
                                             st.markdown(
-                                                f"<p style='font-style: italic; margin-bottom: 16px;'>Scientific name: <strong>{disease_details.get('name2')}</strong></p>",
+                                                f"<p style='font-style: italic; margin: 8px 0; font-size: 0.9rem;'>Scientific name: <strong>{disease_details.get('name2')}</strong></p>",
                                                 unsafe_allow_html=True,
                                             )
 
-                                        st.markdown(
-                                            f"<div style='background-color: {primary_color}10; border-left: 3px solid {primary_color}; padding: 10px; margin-bottom: 20px;'>{disease_details.get('description')}</div>",
-                                            unsafe_allow_html=True,
-                                        )
-
-                                    if "prevention" in disease_details:
-                                        st.markdown(
-                                            f"<h4 style='color: {primary_color}; border-bottom: 1px solid {primary_color}20; padding-bottom: 8px;'>Prevention Methods</h4>",
-                                            unsafe_allow_html=True,
-                                        )
-                                        for i, method in enumerate(
-                                            disease_details.get("prevention")
-                                        ):
                                             st.markdown(
-                                                f"""
-                                                <div style='display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start;'>
-                                                    <div style='background-color: {primary_color}; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;'>{i+1}</div>
-                                                    <div>{method}</div>
-                                                </div>
-                                            """,
+                                                f"<div style='background-color: {primary_color}10; border-left: 3px solid {primary_color}; padding: 10px; margin: 12px 0; font-size: 0.95rem;'>{disease_details.get('description')}</div>",
                                                 unsafe_allow_html=True,
                                             )
 
-                                    if "solution" in disease_details:
-                                        st.markdown(
-                                            f"<h4 style='color: {primary_color}; border-bottom: 1px solid {primary_color}20; padding-bottom: 8px; margin-top: 20px;'>Treatment Solutions</h4>",
-                                            unsafe_allow_html=True,
-                                        )
-                                        for solution in disease_details.get("solution"):
+                                        if "prevention" in disease_details:
                                             st.markdown(
-                                                f"""
-                                                <div style='background-color: {primary_color}15; margin-bottom: 8px; padding: 10px; border-radius: 6px;'>
-                                                    <div style='display: flex; align-items: center;'>
-                                                        <span style='color: {primary_color}; margin-right: 8px;'>✓</span>
-                                                        {solution}
+                                                f"<h4 style='color: {primary_color}; border-bottom: 1px solid {primary_color}20; padding-bottom: 8px;'>Prevention Methods</h4>",
+                                                unsafe_allow_html=True,
+                                            )
+                                            for i, method in enumerate(
+                                                disease_details.get("prevention")
+                                            ):
+                                                st.markdown(
+                                                    f"""
+                                                    <div style='display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start;'>
+                                                        <div style='background-color: {primary_color}; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;'>{i+1}</div>
+                                                        <div>{method}</div>
                                                     </div>
-                                                </div>
-                                            """,
+                                                """,
+                                                    unsafe_allow_html=True,
+                                                )
+
+                                        if "solution" in disease_details:
+                                            st.markdown(
+                                                f"<h4 style='color: {primary_color}; border-bottom: 1px solid {primary_color}20; padding-bottom: 8px; margin-top: 20px;'>Treatment Solutions</h4>",
                                                 unsafe_allow_html=True,
                                             )
+                                            for solution in disease_details.get(
+                                                "solution"
+                                            ):
+                                                st.markdown(
+                                                    f"""
+                                                    <div style='background-color: {primary_color}15; margin-bottom: 8px; padding: 10px; border-radius: 6px;'>
+                                                        <div style='display: flex; align-items: center;'>
+                                                            <span style='color: {primary_color}; margin-right: 8px;'>✓</span>
+                                                            {solution}
+                                                        </div>
+                                                    </div>
+                                                """,
+                                                    unsafe_allow_html=True,
+                                                )
 
                     # Process leaf detections
                     for box in leaf_boxes:
@@ -604,14 +606,14 @@ def main(theme_colors):
 
                     # Display the image
                     with st.container(border=True):
-                        st.image(result_image, caption="Detected Image", width=500)
+                        st.image(result_image, caption="Detected Image", width=450)
 
                     saved_any_detections = False
                     uploaded = False
                     detection_results = []
 
                     image_placeholder.image(
-                        result_image, caption="Detected Image", width=500
+                        result_image, caption="Detected Image", width=450
                     )
 
                     # Check for disease model and show health status
@@ -619,11 +621,11 @@ def main(theme_colors):
                         if len(boxes) == 0:
                             st.markdown(
                                 f"""
-                                <div style="display: flex; align-items: center; gap: 10px; background-color: #d1e7dd; color: #0f5132; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                                    <span style="font-size: 2rem;">✅</span>
+                                <div style="display: flex; align-items: center; gap: 10px; background-color: #d1e7dd; color: #0f5132; padding: 12px; border-radius: 8px; margin: 16px 0;">
+                                    <span style="font-size: 1.5rem;">✅</span>
                                     <div>
-                                        <h3 style="margin: 0; font-weight: 600;">HEALTHY LEAF</h3>
-                                        <p style="margin: 0;">No diseases detected in this sample</p>
+                                        <h3 style="margin: 0; font-weight: 600; font-size: 1.1rem;">HEALTHY LEAF</h3>
+                                        <p style="margin: 4px 0 0 0; font-size: 0.9rem;">No diseases detected in this sample</p>
                                     </div>
                                 </div>
                             """,
@@ -635,11 +637,11 @@ def main(theme_colors):
                         else:
                             st.markdown(
                                 f"""
-                                <div style="display: flex; align-items: center; gap: 10px; background-color: #fff3cd; color: #664d03; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                                    <span style="font-size: 2rem;">⚠️</span>
+                                <div style="display: flex; align-items: center; gap: 10px; background-color: #fff3cd; color: #664d03; padding: 12px; border-radius: 8px; margin: 16px 0;">
+                                    <span style="font-size: 1.5rem;">⚠️</span>
                                     <div>
-                                        <h3 style="margin: 0; font-weight: 600;">DISEASES DETECTED</h3>
-                                        <p style="margin: 0;">{len(boxes)} issue(s) found in this sample</p>
+                                        <h3 style="margin: 0; font-weight: 600; font-size: 1.1rem;">DISEASES DETECTED</h3>
+                                        <p style="margin: 4px 0 0 0; font-size: 0.9rem;">{len(boxes)} issue(s) found in this sample</p>
                                     </div>
                                 </div>
                             """,
@@ -698,7 +700,7 @@ def main(theme_colors):
                                             img_path = disease_details.get("image", "")
                                             if img_path:
                                                 try:
-                                                    st.image(img_path, width=250)
+                                                    st.image(img_path, width=200)
                                                 except:
                                                     st.info(
                                                         "Image preview not available"
@@ -706,17 +708,17 @@ def main(theme_colors):
 
                                         with cols[1]:
                                             st.markdown(
-                                                f"<h3 style='color: {primary_color}; margin-top: 0;'>{disease_details.get('title')}</h3>",
+                                                f"<h3 style='color: {primary_color}; margin-top: 0; font-size: 1.2rem;'>{disease_details.get('title')}</h3>",
                                                 unsafe_allow_html=True,
                                             )
                                             if "name2" in disease_details:
                                                 st.markdown(
-                                                    f"<p style='font-style: italic; margin-bottom: 16px;'>Scientific name: <strong>{disease_details.get('name2')}</strong></p>",
+                                                    f"<p style='font-style: italic; margin: 8px 0; font-size: 0.9rem;'>Scientific name: <strong>{disease_details.get('name2')}</strong></p>",
                                                     unsafe_allow_html=True,
                                                 )
 
                                             st.markdown(
-                                                f"<div style='background-color: {primary_color}10; border-left: 3px solid {primary_color}; padding: 10px; margin-bottom: 20px;'>{disease_details.get('description')}</div>",
+                                                f"<div style='background-color: {primary_color}10; border-left: 3px solid {primary_color}; padding: 10px; margin: 12px 0; font-size: 0.95rem;'>{disease_details.get('description')}</div>",
                                                 unsafe_allow_html=True,
                                             )
 
