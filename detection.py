@@ -263,7 +263,8 @@ def main(theme_colors):
                         image_placeholder.image(
                             default_image_path,
                             caption="Sample Image: Objects Detected",
-                            width=600,
+                            width=400,
+                            height=400
                         )
                     else:
                         uploaded_image = PIL.Image.open(source_img)
