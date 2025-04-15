@@ -147,3 +147,12 @@ client_secret_324667823940-3s3k1pcje8qtb81f3efs6lvf7v24hujo.apps.googleuserconte
 
 # secrets
 .streamlit/secrets.toml
+streamlit-uploader-*.json
+
+# Add these lines to .gitignore
+# Credentials and secrets
+*.json
+credentials.json
+streamlit-uploader-456906-1afccba41d7e.json
+temp_oauth_credentials.json
+.streamlit/secrets.toml
