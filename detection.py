@@ -263,7 +263,7 @@ def main(theme_colors):
                         image_placeholder.image(
                             default_image_path,
                             caption="Sample Image: Objects Detected",
-                            width=400,
+                            width=250,
                             height=400
                         )
                     else:
