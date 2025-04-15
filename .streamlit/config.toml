@@ -1,0 +1,10 @@
+[server]
+enableStaticServing = true
+
+[theme]
+primaryColor = "#41B3A2"
+backgroundColor = "white"
+secondaryBackgroundColor = "#fafafa"
+
+[client]
+toolbarMode = "minimal"
