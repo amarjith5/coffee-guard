@@ -146,6 +146,7 @@ def main(theme_colors=None):
                     mapbox_style="open-street-map",
                     margin={"r": 0, "t": 0, "l": 0, "b": 0},
                     height=600,
+                    width=800,
                     legend=dict(
                         title="Legend",
                         yanchor="top",
@@ -155,7 +156,7 @@ def main(theme_colors=None):
                         bgcolor="rgba(255, 255, 255, 0.8)",
                     ),
                 )
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig)
             else:
                 st.warning("No data available for the selected filter.")
 
@@ -182,9 +183,9 @@ def main(theme_colors=None):
                     color_discrete_map=DISEASE_COLORS,
                 )
                 fig_line.update_layout(
-                    xaxis_title="Date", yaxis_title="Occurrence Count"
+                    xaxis_title="Date", yaxis_title="Occurrence Count", width=800
                 )
-                st.plotly_chart(fig_line, use_container_width=True)
+                st.plotly_chart(fig_line)
             else:
                 st.info("No data available for time-series visualization.")
 
